@@ -1,0 +1,44 @@
+
+<!--
+
+Descrizione Elaborato
+
+Sviluppo di una web app che realizza un serious game sul riciclaggio dei rifiuti.
+L’utente fotografa un rifiuto, il sistema  chiede il tipo o offre un aiuto a determinare il tipo; 
+se l’utente chiede aiuto, il sistema si collega a google image e prova a classificare automaticamente l’immagine. 
+Se non ci riesce aspetta che l’utente selezioni manualmente.
+In base al tipo individuato dall’utente, il sistema visualizza il percorso verso il bidone più vicino.
+Se l’utente raggiunge la posizione del bidone, accumulala  un punto. In funzione dei punti si guadagnano badge 
+e si riduce l’impronta ecologica.  
+Il rifiuto successivo, per generare punti deve essere o di tipo diverso o in un luogo diverso.
+Un test funzionante comprende la georeferenziazione di alcuni bidoni, anche virtuali, in modo che si possano ottenere premi.
+ 
+-->
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.sm.rusco" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SM Rusco 1</name>
+    <description>
+        Progetto per il corso di Sistemi Multimediali a.a. 2014/2015, Università di Bologna, Ingegneria e Scienze Informatiche.
+    </description>
+    <author email="nicola.giancecchi@studio.unibo.it" href="http://nicola.giancecchi.com">
+        Nicola Giancecchi - Aldo Junior Simoncini - Filippo Pagani
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>
+
