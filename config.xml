@@ -17,7 +17,7 @@ Un test funzionante comprende la georeferenziazione di alcuni bidoni, anche virt
 
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.sm.rusco" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>SM Rusco 1</name>
+    <name>RUSCO1</name>
     <description>
         Progetto per il corso di Sistemi Multimediali a.a. 2014/2015, Università di Bologna, Ingegneria e Scienze Informatiche.
     </description>
@@ -40,5 +40,15 @@ Un test funzionante comprende la georeferenziazione di alcuni bidoni, anche virt
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    
+    <!-- Fix for iOS 7 overlapping status bar -->
+    <preference name="StatusBarOverlaysWebView" value="false" /> 
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    
 </widget>
 

@@ -27,7 +27,24 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        //$("#nuovoRifiuto").on("tap", nuovoRifiuto.make);
+        
+        console.log("into bindEvents");
+        $("#openFoto").on("tap", function() {
+             console.log("into function");
+            navigator.camera.getPicture(app.onCameraSuccess, app.onCameraError, {sourceType: Camera.PictureSourceType.CAMERA, quality:75, mediaType:Camera.MediaType.PICTURE});
+        });
     },
+    
+    onCameraSuccess: function(imageURI) {
+        $("#previewFoto").attr("src", imageURI).css({width: "128px", height: "128px"});
+    },
+    
+    onCameraError: function(errorMessage) {
+        navigator.notification.alert(errorMessage, function() {}, "Errore durante l'acquisizione della foto");
+    },
+
+
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
@@ -35,6 +52,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+    
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -46,6 +64,12 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+    /*
+    var nuovoRifiuto = {
+        make: function() {
+            
+        }
+    }*/
 };
 
 app.initialize();

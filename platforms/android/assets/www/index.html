@@ -32,18 +32,53 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <link href="lib/jquery-mobile/jquery.mobile-1.4.5.css" rel="stylesheet" />
+    
+        <title>RUSCO1</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div data-role="page" id="homePage">
+            <div data-theme="" data-role="header">
+                <h3>RUSCO1</h3>
+            </div>
+            
+            <div data-role="content">
+                <a data-role="button" href="#nuovoRifiuto" data-icon="plus" data-iconpos="left">Scansiona nuovo rifiuto</a>
+                <a data-role="button" href="#mappaBidoni" data-icon="location" data-iconpos="left">Mappa bidoni</a>
+                <a data-role="button" href="#listaBadge" data-icon="star" data-iconpos="left">Badge ottenuti</a>
+                <a data-role="button" href="#storicoRaccolta" data-icon="bullets" data-iconpos="left">Storico raccolta</a>
+            
             </div>
         </div>
+        
+        <div data-role="page" id="nuovoRifiuto">
+            <div data-theme="" data-role="header">
+                <a id="btnBack" data-role="button" href="#homePage" data-icon="back" data-iconpos="left" class="ui-btn-left"></a>
+                <h3>Classifica rifiuto</h3>
+            </div>
+            
+            <div data-role="content">
+                <a id="openFoto" data-role="button" href="#openFoto">Apri Fotocamera</a>
+                <img id="previewFoto" src=""/> 
+            
+                <ul data-role="listview" data-filter-reveal="true" data-filter-placeholder="Cerca un rifiuto nella lista">
+                    <li><a href="#apple">Apple</a></li>   
+                    <li><a href="#pear">Pear</a></li>
+                    <li><a href="#banana">Banana</a></li>
+                    <li><a href="#kiwi">Kiwi</a></li>
+                    <li><a href="#tomato">Tomato</a></li> 
+                </ul>
+        </div>
+        
+        <div data-theme="a" data-role="footer" data-position="fixed">
+             <a data-role="button" id="askHelp" href="#">Chiedi aiuto</a>
+        </div>
+            
+        
         <script type="text/javascript" src="cordova.js"></script>
+        
+	    <script type="text/javascript" src="lib/jquery/jquery-2.1.4.min.js"></script>
+	    <script type="text/javascript" src="lib/jquery-mobile/jquery.mobile-1.4.5.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
