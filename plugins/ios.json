@@ -28,7 +28,7 @@
                     "AssetsLibrary.framework": [
                         {
                             "xml": false,
-                            "count": 2
+                            "count": 3
                         }
                     ],
                     "MobileCoreServices.framework": [
@@ -38,6 +38,22 @@
                         }
                     ],
                     "AVFoundation.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "SystemConfiguration.framework": [
+                        {
+                            "xml": true,
+                            "count": 1
+                        },
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "Security.framework": [
                         {
                             "xml": false,
                             "count": 1
@@ -79,6 +95,22 @@
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"ios-package\" value=\"CDVFileTransfer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ImageResizePlugin\"><param name=\"ios-package\" value=\"ImageResize\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"CordovaHttpPlugin\"><param name=\"ios-package\" value=\"CordovaHttpPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -109,6 +141,18 @@
             "PACKAGE_NAME": "com.sm.rusco"
         },
         "org.apache.cordova.statusbar": {
+            "PACKAGE_NAME": "com.sm.rusco"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.sm.rusco"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.sm.rusco"
+        },
+        "com.raananw.imageResizer": {
+            "PACKAGE_NAME": "com.sm.rusco"
+        },
+        "com.synconset.cordovaHTTP": {
             "PACKAGE_NAME": "com.sm.rusco"
         }
     },

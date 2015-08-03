@@ -99,6 +99,49 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "id": "cordova-plugin-network-information.network",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "id": "cordova-plugin-network-information.Connection",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+        "id": "cordova-plugin-file-transfer.FileTransferError",
+        "clobbers": [
+            "window.FileTransferError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+        "id": "cordova-plugin-file-transfer.FileTransfer",
+        "clobbers": [
+            "window.FileTransfer"
+        ]
+    },
+    {
+        "file": "plugins/com.raananw.imageResizer/www/imageresize.js",
+        "id": "com.raananw.imageResizer.ImageResizePlugin",
+        "clobbers": [
+            "plugins.imageResizer"
+        ]
+    },
+    {
+        "file": "plugins/com.synconset.cordovaHTTP/www/cordovaHTTP.js",
+        "id": "com.synconset.cordovaHTTP.CordovaHttpPlugin",
+        "clobbers": [
+            "plugins.CordovaHttpPlugin"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -253,6 +296,10 @@ module.exports.metadata =
     "cordova-plugin-media": "1.0.1",
     "cordova-plugin-media-capture": "1.0.1",
     "org.apache.cordova.statusbar": "0.1.10",
+    "cordova-plugin-network-information": "1.0.1",
+    "cordova-plugin-file-transfer": "1.2.1",
+    "com.raananw.imageResizer": "0.1.2",
+    "com.synconset.cordovaHTTP": "0.1.4",
     "cordova-plugin-file": "2.1.0"
 }
 // BOTTOM OF METADATA
