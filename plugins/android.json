@@ -41,11 +41,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"ImageResizePlugin\"><param name=\"android-package\" value=\"com.raananw.ImageResizePlugin\" /></feature>",
+                            "xml": "<feature name=\"CordovaHttpPlugin\"><param name=\"android-package\" value=\"com.synconset.CordovaHttpPlugin\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"CordovaHttpPlugin\"><param name=\"android-package\" value=\"com.synconset.CordovaHttpPlugin\" /></feature>",
+                            "xml": "<feature name=\"ImageResizePlugin\"><param name=\"android-package\" value=\"com.synconset.ImageResizePlugin\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -106,10 +106,10 @@
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.sm.rusco"
         },
-        "com.raananw.imageResizer": {
+        "com.synconset.cordovaHTTP": {
             "PACKAGE_NAME": "com.sm.rusco"
         },
-        "com.synconset.cordovaHTTP": {
+        "com.synconset.imageResizer": {
             "PACKAGE_NAME": "com.sm.rusco"
         }
     },

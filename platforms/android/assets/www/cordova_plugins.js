@@ -133,17 +133,17 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/com.raananw.imageResizer/www/imageresize.js",
-        "id": "com.raananw.imageResizer.ImageResizePlugin",
-        "clobbers": [
-            "plugins.imageResizer"
-        ]
-    },
-    {
         "file": "plugins/com.synconset.cordovaHTTP/www/cordovaHTTP.js",
         "id": "com.synconset.cordovaHTTP.CordovaHttpPlugin",
         "clobbers": [
             "plugins.CordovaHttpPlugin"
+        ]
+    },
+    {
+        "file": "plugins/com.synconset.imageResizer/www/imageresize.js",
+        "id": "com.synconset.imageResizer.ImageResizePlugin",
+        "clobbers": [
+            "plugins.imageResizer"
         ]
     },
     {
@@ -303,8 +303,8 @@ module.exports.metadata =
     "org.apache.cordova.statusbar": "0.1.10",
     "cordova-plugin-network-information": "1.0.1",
     "cordova-plugin-file-transfer": "1.2.1",
-    "com.raananw.imageResizer": "0.1.2",
     "com.synconset.cordovaHTTP": "0.1.4",
+    "com.synconset.imageResizer": "0.1.1",
     "cordova-plugin-file": "2.1.0"
 }
 // BOTTOM OF METADATA

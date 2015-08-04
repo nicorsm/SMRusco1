@@ -56,9 +56,6 @@
 		5C8A65B30AAC4613AF9E5E82 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A6736695060642D09B2BC57D /* CDVReachability.m */; };
 		E6C5A158D1EA43338B1FAA3E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47F5D0B7585466EA38AB772 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8F8756C47B9E4B9BA9EA74ED /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4A64867824630B58ADFC9 /* CDVFileTransfer.m */; };
-		5C7C07DD2F7049C1AC258A47 /* ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365367F26C9438FA8DCF7A3 /* ImageResize.m */; };
-		40A155F47C3540C79D0B721A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 410E2162089044928B8A9E5A /* NSData+Base64.m */; settings = {COMPILER_FLAGS = -fno-objc-arc; }; };
-		6C4F8D6958F047248745E2C6 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E55C89E50CF4E528D5DFDF4 /* UIImage+Scale.m */; };
 		3DC7A348F4844640BD7D9EEB /* CordovaHttpPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E70BE076E5648AD820DCDB9 /* CordovaHttpPlugin.m */; };
 		C3CE09DEB37849D68DC28152 /* HTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 590A58126FAC42B2A3FAB5DC /* HTTPManager.m */; };
 		AF9C7057CCFB4A6CA94B1B7E /* TextResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 81ABFE39D0A3403A80314777 /* TextResponseSerializer.m */; };
@@ -165,12 +162,6 @@
 		B47F5D0B7585466EA38AB772 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		EFE4A64867824630B58ADFC9 /* CDVFileTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFileTransfer.m"; path = "cordova-plugin-file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		A17275ACF310461E8F30D752 /* CDVFileTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFileTransfer.h"; path = "cordova-plugin-file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		2365367F26C9438FA8DCF7A3 /* ImageResize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ImageResize.m"; path = "com.raananw.imageResizer/ImageResize.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		410E2162089044928B8A9E5A /* NSData+Base64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "com.raananw.imageResizer/NSData+Base64.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		6E55C89E50CF4E528D5DFDF4 /* UIImage+Scale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "com.raananw.imageResizer/UIImage+Scale.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		21348AB218024ADFB765886E /* ImageResize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ImageResize.h"; path = "com.raananw.imageResizer/ImageResize.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		3ABC7BA25E86418B824DD850 /* NSData+Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "com.raananw.imageResizer/NSData+Base64.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		A651AD5E51A04A669D0F60B6 /* UIImage+Scale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "com.raananw.imageResizer/UIImage+Scale.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		2E70BE076E5648AD820DCDB9 /* CordovaHttpPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CordovaHttpPlugin.m"; path = "com.synconset.cordovaHTTP/CordovaHttpPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		590A58126FAC42B2A3FAB5DC /* HTTPManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "HTTPManager.m"; path = "com.synconset.cordovaHTTP/HTTPManager.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		81ABFE39D0A3403A80314777 /* TextResponseSerializer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "TextResponseSerializer.m"; path = "com.synconset.cordovaHTTP/TextResponseSerializer.m"; sourceTree = "<group>"; fileEncoding = 4; };
@@ -197,6 +188,12 @@
 		A1D4CFCDF16B469581BA6ABE /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AFURLResponseSerialization.h"; path = "com.synconset.cordovaHTTP/AFURLResponseSerialization.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		6B57E7CC2A5F4A009BD9F810 /* AFURLSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AFURLSessionManager.h"; path = "com.synconset.cordovaHTTP/AFURLSessionManager.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		F5F840904D3842ACAF752413 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		59A83B9F8A3A48F591C45A2E /* ImageResize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ImageResize.m"; path = "com.synconset.imageResizer/ImageResize.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		2E88BB9A67114570B258077C /* NSData+Base64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "com.synconset.imageResizer/NSData+Base64.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		E82C5D7C574F462FB4C66BA5 /* UIImage+Scale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "com.synconset.imageResizer/UIImage+Scale.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		E6E844125C6E493399FA3AA7 /* ImageResize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ImageResize.h"; path = "com.synconset.imageResizer/ImageResize.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		64CA26B0164E4A0E82384F90 /* NSData+Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "com.synconset.imageResizer/NSData+Base64.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		D24FAD0C1FDA4C0E9E5EBCCC /* UIImage+Scale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "com.synconset.imageResizer/UIImage+Scale.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,12 +328,6 @@
 				3B91D4030D9940E7A1404F38 /* CDVReachability.h */,
 				EFE4A64867824630B58ADFC9 /* CDVFileTransfer.m */,
 				A17275ACF310461E8F30D752 /* CDVFileTransfer.h */,
-				2365367F26C9438FA8DCF7A3 /* ImageResize.m */,
-				410E2162089044928B8A9E5A /* NSData+Base64.m */,
-				6E55C89E50CF4E528D5DFDF4 /* UIImage+Scale.m */,
-				21348AB218024ADFB765886E /* ImageResize.h */,
-				3ABC7BA25E86418B824DD850 /* NSData+Base64.h */,
-				A651AD5E51A04A669D0F60B6 /* UIImage+Scale.h */,
 				2E70BE076E5648AD820DCDB9 /* CordovaHttpPlugin.m */,
 				590A58126FAC42B2A3FAB5DC /* HTTPManager.m */,
 				81ABFE39D0A3403A80314777 /* TextResponseSerializer.m */,
@@ -362,6 +353,12 @@
 				836B858C23C2497BA32E4B5E /* AFURLRequestSerialization.h */,
 				A1D4CFCDF16B469581BA6ABE /* AFURLResponseSerialization.h */,
 				6B57E7CC2A5F4A009BD9F810 /* AFURLSessionManager.h */,
+				59A83B9F8A3A48F591C45A2E /* ImageResize.m */,
+				2E88BB9A67114570B258077C /* NSData+Base64.m */,
+				E82C5D7C574F462FB4C66BA5 /* UIImage+Scale.m */,
+				E6E844125C6E493399FA3AA7 /* ImageResize.h */,
+				64CA26B0164E4A0E82384F90 /* NSData+Base64.h */,
+				D24FAD0C1FDA4C0E9E5EBCCC /* UIImage+Scale.h */,
 			);
 			name = Plugins;
 			path = RUSCO1/Plugins;
@@ -564,9 +561,6 @@
 				BF9A178429EF46B19CE2D69B /* CDVConnection.m in Sources */,
 				5C8A65B30AAC4613AF9E5E82 /* CDVReachability.m in Sources */,
 				8F8756C47B9E4B9BA9EA74ED /* CDVFileTransfer.m in Sources */,
-				5C7C07DD2F7049C1AC258A47 /* ImageResize.m in Sources */,
-				40A155F47C3540C79D0B721A /* NSData+Base64.m in Sources */,
-				6C4F8D6958F047248745E2C6 /* UIImage+Scale.m in Sources */,
 				3DC7A348F4844640BD7D9EEB /* CordovaHttpPlugin.m in Sources */,
 				C3CE09DEB37849D68DC28152 /* HTTPManager.m in Sources */,
 				AF9C7057CCFB4A6CA94B1B7E /* TextResponseSerializer.m in Sources */,
@@ -579,6 +573,9 @@
 				B9753447776F4F3C819A45F9 /* AFURLRequestSerialization.m in Sources */,
 				1CDDF49A559A4F0A8A68B79D /* AFURLResponseSerialization.m in Sources */,
 				6312BA98BFDD4EBAA8E60515 /* AFURLSessionManager.m in Sources */,
+				35C40ACC7DB747D09DBB9FF4 /* ImageResize.m in Sources */,
+				EC3566A113C14D498E09F3C2 /* NSData+Base64.m in Sources */,
+				279CF62E90AA4276AD6BC778 /* UIImage+Scale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

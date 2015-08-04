@@ -47,9 +47,6 @@
     <feature name="FileTransfer">
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
     </feature>
-    <feature name="ImageResizePlugin">
-        <param name="android-package" value="com.raananw.ImageResizePlugin" />
-    </feature>
     <feature name="CordovaHttpPlugin">
         <param name="android-package" value="com.synconset.CordovaHttpPlugin" />
     </feature>

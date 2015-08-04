@@ -31,16 +31,24 @@ var app = {
         
         console.log("into bindEvents");
         $("#openFoto").on("tap", function () {
-            console.log("into function");
-            navigator.camera.getPicture(app.onCameraSuccess, app.onCameraError, { sourceType: Camera.PictureSourceType.CAMERA, quality: 60, mediaType: Camera.MediaType.PICTURE });
+            navigator.camera.getPicture(app.onCameraSuccess, app.onCameraError, 
+                { sourceType: Camera.PictureSourceType.CAMERA, 
+                    quality: 60, 
+                    mediaType: Camera.MediaType.PICTURE,
+                    targetWidth: 1024,
+                    targetHeight: 1024 });
         });
     },
+
+
 
     onCameraSuccess: function (imageURI) {
 
 
-        $("#previewFoto").attr("src", imageURI).css({ width: "128px", height: "128px" });
+        $("#previewFoto").attr("src", imageURI).css({ width: "auto", height: "200px" });
 
+        $("#captionSearch").text("Foto scattata.");
+        
         var retries = 0;
         var clearCache = function () {
             navigator.camera.cleanup();
@@ -55,57 +63,68 @@ var app = {
             
             console.log("Response = " + r.response);
 
-            var token = r.response["token"];
+            var json = JSON.parse(r.response);
+            var token = json["token"];
+            	
+            $("#captionSearch").text("Foto inviata. In attesa di risposta...");
+            setTimeout(connectToCloudSight(token), 10000);
 
-            setTimeout(function () {
-                cordovaHTTP.post("https://api.cloudsightapi.com/image_responses/" + token, 
-                    {}, { "Authorization": "CloudSight GZY98-jCvOAvLCn_amlS3w" }, 
-                    function (response) {
+            //alert(r.response);
+        };
+
+        var fail = function (error) {
+            console.log("An error has occurred: Code = " + error.code);
+            clearCache();
+            alert("Errore durante l'invio della foto, riprovare");
+            
+            $("#captionSearch").text("Errore.");
+        };
+
+        var options = new FileUploadOptions();
+        options.fileKey = "image_request[image]";
+        options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+        options.mimeType = "image/jpeg";
+        options.headers = { "Authorization": "CloudSight GZY98-jCvOAvLCn_amlS3w" };
+        options.params = { "image_request[locale]": "it-IT" , "image_request[language]":"it"}; // if we need to send parameters to the server request
+        var ft = new FileTransfer();
+        ft.upload(imageURI, encodeURI("https://api.cloudsightapi.com/image_requests"), win, fail, options);
+
+        $("#captionSearch").text("In attesa di risposta...");
+
+        var connectToCloudSight = function (token) {
+            var url = "https://api.cloudsightapi.com/image_responses/" + token;
+            cordovaHTTP.get(url,
+                {}, { "Authorization": "CloudSight GZY98-jCvOAvLCn_amlS3w" },
+                function (response) {
                     // prints 200
                     console.log(response.status);
                     try {
                         response.data = JSON.parse(response.data);
-                        // prints test
-                        console.log(response.data.message);
-                        alert(response.data["name"]);
+                        
+                        if(response.data["status"] == "not completed"){
+                            setTimeout(connectToCloudSight(token), 3000);
+                            $("#captionSearch").text("Elaborazione in corso, attendere...");
+                        } else {
+                            //alert("status: " + response.data["status"] + "\nname: " + response.data["name"]);
+                            console.log(response.data);
+                            $("#captionSearch").text("Suggerimento: " + response.data["name"]);
+                        }
                     } catch (e) {
-                        console.error("JSON parsing error");
-                        alert("error parsing");
+                        alert("Errore durante il parsing JSON, riprovare.");
+                        $("#captionSearch").text("Errore.");
                     }
                 }, function (response) {
                     // prints 403
                     console.log(response.status);
-
+                    console.log(response.data);
                     //prints Permission denied 
                     console.log(response.error);
-                        alert("error response");
+                    alert("Errore durante la chiamata al server, riprovare.");
+                    $("#captionSearch").text("Errore.");
                 });
+        };
 
-
-
-        }, 10000);
-
-        alert(r.response);
-
-        alert('Done!');
-    };
-
-    var fail = function (error) {
-        console.log("An error has occurred: Code = " + error.code);
-        clearCache();
-        alert('Ups. Something wrong happens!');
-    };
-
-    var options = new FileUploadOptions();
-    options.fileKey = "image_request[image]";
-    options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-    options.mimeType = "image/jpeg";
-    options.headers = { "Authorization": "CloudSight GZY98-jCvOAvLCn_amlS3w" };
-    options.params = { "image_request[locale]": "en-US" }; // if we need to send parameters to the server request
-    var ft = new FileTransfer();
-    ft.upload(imageURI, encodeURI("http://api.cloudsightapi.com/image_requests"), win, fail, options);
-
-},
+    },
 
     onCameraError: function (errorMessage) {
         navigator.notification.alert(errorMessage, function () { }, "Errore durante l'acquisizione della foto");

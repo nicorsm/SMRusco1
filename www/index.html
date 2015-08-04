@@ -33,6 +33,7 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link href="lib/jquery-mobile/jquery.mobile-1.4.5.css" rel="stylesheet" />
+        <link href="css/index.css" rel="stylesheet" />
     
         <title>RUSCO1</title>
     </head>
@@ -58,9 +59,8 @@
             </div>
             
             <div data-role="content">
-                <a id="openFoto" data-role="button" href="#openFoto">Apri Fotocamera</a>
-                <img id="previewFoto" src=""/> 
-            
+                <a id="openFoto" data-role="button" href="#openFoto"><img id="previewFoto" src=""/><br/>Apri Fotocamera<br/></a>
+                <p id="captionSearch">In attesa di scansione.</p>
                 <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Cerca un rifiuto nella lista">
                     <li><a href="#apple">Apple</a></li>   
                     <li><a href="#pear">Pear</a></li>
@@ -70,10 +70,11 @@
                 </ul>
         </div>
         
+        <!--
         <div data-theme="a" data-role="footer" data-position="fixed">
              <a data-role="button" id="askHelp" href="#">Chiedi aiuto</a>
         </div>
-            
+            -->
         
         <script type="text/javascript" src="cordova.js"></script>
         

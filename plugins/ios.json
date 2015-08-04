@@ -149,10 +149,10 @@
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.sm.rusco"
         },
-        "com.raananw.imageResizer": {
+        "com.synconset.cordovaHTTP": {
             "PACKAGE_NAME": "com.sm.rusco"
         },
-        "com.synconset.cordovaHTTP": {
+        "com.synconset.imageResizer": {
             "PACKAGE_NAME": "com.sm.rusco"
         }
     },
