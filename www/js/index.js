@@ -38,14 +38,34 @@ var app = {
                     targetWidth: 1024,
                     targetHeight: 1024 });
         });
+        
+         $.getJSON("http://nicola.giancecchi.com/dev/smrusco/rifiuti.json", function(rows) {
+            console.log(rows);
+            $.each(rows, function (i, item) {
+                $('ul').append('<li>' + item[1] + '</li>');
+            });
+            $("#listViewRifiuti").listview("refresh");
+        });
+        
     },
+    
+    
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function () {
+        app.receivedEvent('deviceready');
+        
+    },
+    
 
 
 
     onCameraSuccess: function (imageURI) {
 
-
-        $("#previewFoto").attr("src", imageURI).css({ width: "auto", height: "200px" });
+        console.log(imageURI);
+        $("#previewFoto").attr("src", imageURI + "?ts=" + new Date().toTimeString).css({ width: "auto", height: "200px" });
 
         $("#captionSearch").text("Foto scattata.");
         
@@ -67,7 +87,7 @@ var app = {
             var token = json["token"];
             	
             $("#captionSearch").text("Foto inviata. In attesa di risposta...");
-            setTimeout(connectToCloudSight(token), 10000);
+            setTimeout(connectToCloudSight(token), 5000);
 
             //alert(r.response);
         };
@@ -131,13 +151,6 @@ var app = {
     },
 
 
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function () {
-        app.receivedEvent('deviceready');
-    },
     
     // Update DOM on a Received Event
     receivedEvent: function (id) {
@@ -156,6 +169,9 @@ var app = {
             
         }
     }*/
+    
+    
+    
 };
 
 app.initialize();
