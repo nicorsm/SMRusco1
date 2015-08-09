@@ -47,6 +47,10 @@ var app = {
             $("#listViewRifiuti").listview("refresh");
         });
         
+        // @ PAGO: un elenco dei punti di raccolta è disponibile su http://nicola.giancecchi.com/dev/smrusco/puntiraccolta.json
+        // usa l'esempio qui sopra dei rifiuti. il file è strutturato con i campi: ID, latitudine, longitudine, nome della via.
+        // per ora i bidoni sono tutti dello stesso tipo (sono isole ecologiche, ci sono tutti i bidoni disponibili)
+        
     },
     
     
