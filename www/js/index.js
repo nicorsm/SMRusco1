@@ -17,6 +17,8 @@
  * under the License.
  */
 var app = {
+    watchID: "", //for watch position
+
     // Application Constructor
     initialize: function () {
         this.bindEvents();
@@ -50,7 +52,7 @@ var app = {
         // @ PAGO: un elenco dei punti di raccolta è disponibile su http://nicola.giancecchi.com/dev/smrusco/puntiraccolta.json
         // usa l'esempio qui sopra dei rifiuti. il file è strutturato con i campi: ID, latitudine, longitudine, nome della via.
         // per ora i bidoni sono tutti dello stesso tipo (sono isole ecologiche, ci sono tutti i bidoni disponibili)
-        
+
     },
     
     
@@ -61,8 +63,39 @@ var app = {
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
         document.addEventListener("backbutton", function () {}, false );  //for intercept back buttons on android.
+        this.watchID = navigator.geolocation.watchPosition(
+                        app.onPositionSuccess,
+                        app.onPositionError,
+                        { maximumAge: 5000, timeout: 5000, enableHighAccuracy: true });console.log("miao");
     },
 
+    onPositionSuccess: function(position) {
+                console.log(position);
+             $("#positionNow").text(position.coords.latitudine);
+    },
+
+    //when device can t know position
+    onPositionError: function(error) {
+
+            var messaggio = "";
+
+            switch (error.code) {
+
+                case PositionError.PERMISSION_DENIED:
+                    messaggio = "L'applicazione non è autorizzata all'acquisizione della posizione corrente";
+                    break;
+
+                case PositionError.POSITION_UNAVAILABLE:
+                    messaggio = "Non è disponibile la rilevazione della posizione corrente";
+                    break;
+
+                case PositionError.TIMEOUT:
+                    messaggio = "Non è stato possibile rilevare la posizione corrente";
+                    break;
+            }
+
+            navigator.notification.alert(messaggio, function() {}, "Avviso");
+    },
 
     onCameraSuccess: function (imageURI) {
 
