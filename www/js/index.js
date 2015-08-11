@@ -60,10 +60,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
-        
+        document.addEventListener("backbutton", function () {}, false );  //for intercept back buttons on android.
     },
-    
-
 
 
     onCameraSuccess: function (imageURI) {
