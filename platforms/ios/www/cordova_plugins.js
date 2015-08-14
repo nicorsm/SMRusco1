@@ -142,6 +142,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/plugin.google.maps/www/googlemaps-cdv-plugin.js",
+        "id": "plugin.google.maps.phonegap-googlemaps-plugin",
+        "clobbers": [
+            "plugin.google.maps"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -286,6 +293,13 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "file": "plugins/plugin.http.request/www/http-request.js",
+        "id": "plugin.http.request.phonegap-http-requst",
+        "clobbers": [
+            "cordova.plugins.http-request"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -300,7 +314,10 @@ module.exports.metadata =
     "cordova-plugin-file-transfer": "1.2.1",
     "com.synconset.cordovaHTTP": "0.1.4",
     "com.synconset.imageResizer": "0.1.1",
-    "cordova-plugin-file": "2.1.0"
+    "plugin.google.maps": "1.2.5",
+    "cordova-plugin-file": "2.1.0",
+    "plugin.http.request": "1.0.4",
+    "com.googlemaps.ios": "1.9.2"
 }
 // BOTTOM OF METADATA
 });

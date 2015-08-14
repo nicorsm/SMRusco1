@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
 var app = {
     // Application Constructor
     initialize: function () {
@@ -27,6 +28,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        var watchID = null; //var for watch the geoposition
         //$("#nuovoRifiuto").on("tap", nuovoRifiuto.make);
         
         console.log("into bindEvents");
@@ -39,6 +41,7 @@ var app = {
                     targetHeight: 1024 });
         });
         
+        //setTimeout( function() {
          $.getJSON("http://nicola.giancecchi.com/dev/smrusco/rifiuti.json", function(rows) {
             console.log(rows);
             $.each(rows, function (i, item) {
@@ -47,6 +50,12 @@ var app = {
             $("#listViewRifiuti").listview("refresh");
         });
         
+        //}, 15000);
+        
+        // @ PAGO: un elenco dei punti di raccolta è disponibile su http://nicola.giancecchi.com/dev/smrusco/puntiraccolta.json
+        // usa l'esempio qui sopra dei rifiuti. il file è strutturato con i campi: ID, latitudine, longitudine, nome della via.
+        // per ora i bidoni sono tutti dello stesso tipo (sono isole ecologiche, ci sono tutti i bidoni disponibili)
+
     },
     
     
@@ -55,12 +64,58 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-        app.receivedEvent('deviceready');
+        console.log("deviceReady")
         
+        app.receivedEvent('deviceready');
+        document.addEventListener("backbutton", function () {}, false );  //for intercept back buttons on android.
+        // Throw an error if no update is received every 30 seconds
+        var options = { timeout: 30000 };
+        watchID = navigator.geolocation.watchPosition(app.onSuccess, app.onError, options);
+        $("#positionNow").css({ "text-align": "center" });
+        var div = document.getElementById("mappa");
+
+        var map ;
+        // Initialize the map view
+        map = plugin.google.maps.Map.getMap(div);
+
+        map.on(plugin.google.maps.event.MAP_READY, app.onMapReady);
+        // Wait until the map is ready status.
+        //map.addEventListener(plugin.google.maps.event.MAP_READY, app.onMapReady);
+    },
+
+    //when map is visible
+    onMapReady: function(){
+
     },
     
+    //the device can know the position
+    onSuccess: function(position) {
+             console.log(position);
+             $("#positionNow").text(position.coords.latitude);
+    },
 
+    //when device can t know position
+    onError: function(error) {
 
+            var messaggio = "";
+
+            switch (error.code) {
+
+                case 1://PositionError.PERMISSION_DENIED:
+                    messaggio = "L'applicazione non è autorizzata all'acquisizione della posizione corrente";
+                    break;
+
+                case 2://PositionError.POSITION_UNAVAILABLE:
+                    messaggio = "Non è disponibile la rilevazione della posizione corrente";
+                    break;
+
+                case 3://PositionError.TIMEOUT:
+                    messaggio = "Non è stato possibile rilevare la posizione corrente";
+                    break;
+            }
+
+            navigator.notification.alert(messaggio, function() {}, "Avviso");
+    },
 
     onCameraSuccess: function (imageURI) {
 
@@ -85,7 +140,7 @@ var app = {
 
             var json = JSON.parse(r.response);
             var token = json["token"];
-            	
+           
             $("#captionSearch").text("Foto inviata. In attesa di risposta...");
             setTimeout(connectToCloudSight(token), 5000);
 
@@ -154,14 +209,17 @@ var app = {
     
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+       try{
+            var parentElement = document.getElementById(id);
+               var listeningElement = parentElement.querySelector('.listening');
+               var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+               listeningElement.setAttribute('style', 'display:none;');
+               receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+               console.log('Received Event: ' + id);
+       }catch(err){};
+
     }
     /*
     var nuovoRifiuto = {

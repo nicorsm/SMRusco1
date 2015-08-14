@@ -65,7 +65,7 @@
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string></string>
+    <string>Show your location on the map</string>
     <key>NSMainNibFile</key>
     <string></string>
     <key>NSMainNibFile~ipad</key>
@@ -182,5 +182,22 @@
     </array>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
+    <key>Google Maps API Key</key>
+    <string>AIzaSyBONB2nK-DxgmtLHGdGkCr1R6yDI1aXfAI</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Trace your location on the map</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLName</key>
+        <string>com.sm.rusco</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.sm.rusco</string>
+        </array>
+      </dict>
+    </array>
   </dict>
 </plist>

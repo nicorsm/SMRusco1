@@ -50,4 +50,16 @@
     <feature name="CordovaHttpPlugin">
         <param name="android-package" value="com.synconset.CordovaHttpPlugin" />
     </feature>
+    <feature name="HttpRequest">
+        <param name="android-package" value="plugin.http.request.HttpRequest" />
+    </feature>
+    <feature name="GoogleMaps">
+        <param name="android-package" value="plugin.google.maps.GoogleMaps" />
+    </feature>
+    <feature name="External">
+        <param name="android-package" value="plugin.google.maps.External" />
+    </feature>
+    <feature name="Geocoder">
+        <param name="android-package" value="plugin.google.maps.MyGeocoder" />
+    </feature>
 </widget>

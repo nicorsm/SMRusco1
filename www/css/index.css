@@ -23,3 +23,11 @@
     text-align:center;
 }
 
+#mappa {
+    background-color:transparent;
+    height:400px;
+    width:320px;
+    overflow:hidden;
+    padding:0;
+    margin:0;
+}

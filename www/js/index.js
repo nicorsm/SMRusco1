@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
 var app = {
-    var map;
     // Application Constructor
     initialize: function () {
         this.bindEvents();
@@ -41,6 +41,7 @@ var app = {
                     targetHeight: 1024 });
         });
         
+        //setTimeout( function() {
          $.getJSON("http://nicola.giancecchi.com/dev/smrusco/rifiuti.json", function(rows) {
             console.log(rows);
             $.each(rows, function (i, item) {
@@ -48,6 +49,8 @@ var app = {
             });
             $("#listViewRifiuti").listview("refresh");
         });
+        
+        //}, 15000);
         
         // @ PAGO: un elenco dei punti di raccolta è disponibile su http://nicola.giancecchi.com/dev/smrusco/puntiraccolta.json
         // usa l'esempio qui sopra dei rifiuti. il file è strutturato con i campi: ID, latitudine, longitudine, nome della via.
@@ -62,6 +65,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         console.log("deviceReady")
+        
         app.receivedEvent('deviceready');
         document.addEventListener("backbutton", function () {}, false );  //for intercept back buttons on android.
         // Throw an error if no update is received every 30 seconds
@@ -70,17 +74,20 @@ var app = {
         $("#positionNow").css({ "text-align": "center" });
         var div = document.getElementById("mappa");
 
+        var map ;
         // Initialize the map view
         map = plugin.google.maps.Map.getMap(div);
 
+        map.on(plugin.google.maps.event.MAP_READY, app.onMapReady);
         // Wait until the map is ready status.
-        map.addEventListener(plugin.google.maps.event.MAP_READY, app.onMapReady);
+        //map.addEventListener(plugin.google.maps.event.MAP_READY, app.onMapReady);
     },
 
     //when map is visible
     onMapReady: function(){
 
-    }
+    },
+    
     //the device can know the position
     onSuccess: function(position) {
              console.log(position);
@@ -133,7 +140,7 @@ var app = {
 
             var json = JSON.parse(r.response);
             var token = json["token"];
-            	
+           
             $("#captionSearch").text("Foto inviata. In attesa di risposta...");
             setTimeout(connectToCloudSight(token), 5000);
 
