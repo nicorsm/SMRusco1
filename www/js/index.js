@@ -17,8 +17,7 @@
  * under the License.
  */
 var app = {
-    watchID: "", //for watch position
-
+    var map;
     // Application Constructor
     initialize: function () {
         this.bindEvents();
@@ -29,6 +28,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        var watchID = null; //var for watch the geoposition
         //$("#nuovoRifiuto").on("tap", nuovoRifiuto.make);
         
         console.log("into bindEvents");
@@ -61,35 +61,48 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
+        console.log("deviceReady")
         app.receivedEvent('deviceready');
         document.addEventListener("backbutton", function () {}, false );  //for intercept back buttons on android.
-        this.watchID = navigator.geolocation.watchPosition(
-                        app.onPositionSuccess,
-                        app.onPositionError,
-                        { maximumAge: 5000, timeout: 5000, enableHighAccuracy: true });console.log("miao");
+        // Throw an error if no update is received every 30 seconds
+        var options = { timeout: 30000 };
+        watchID = navigator.geolocation.watchPosition(app.onSuccess, app.onError, options);
+        $("#positionNow").css({ "text-align": "center" });
+        var div = document.getElementById("mappa");
+
+        // Initialize the map view
+        map = plugin.google.maps.Map.getMap(div);
+
+        // Wait until the map is ready status.
+        map.addEventListener(plugin.google.maps.event.MAP_READY, app.onMapReady);
     },
 
-    onPositionSuccess: function(position) {
-                console.log(position);
-             $("#positionNow").text(position.coords.latitudine);
+    //when map is visible
+    onMapReady: function(){
+
+    }
+    //the device can know the position
+    onSuccess: function(position) {
+             console.log(position);
+             $("#positionNow").text(position.coords.latitude);
     },
 
     //when device can t know position
-    onPositionError: function(error) {
+    onError: function(error) {
 
             var messaggio = "";
 
             switch (error.code) {
 
-                case PositionError.PERMISSION_DENIED:
+                case 1://PositionError.PERMISSION_DENIED:
                     messaggio = "L'applicazione non è autorizzata all'acquisizione della posizione corrente";
                     break;
 
-                case PositionError.POSITION_UNAVAILABLE:
+                case 2://PositionError.POSITION_UNAVAILABLE:
                     messaggio = "Non è disponibile la rilevazione della posizione corrente";
                     break;
 
-                case PositionError.TIMEOUT:
+                case 3://PositionError.TIMEOUT:
                     messaggio = "Non è stato possibile rilevare la posizione corrente";
                     break;
             }
@@ -189,14 +202,17 @@ var app = {
     
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+       try{
+            var parentElement = document.getElementById(id);
+               var listeningElement = parentElement.querySelector('.listening');
+               var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+               listeningElement.setAttribute('style', 'display:none;');
+               receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+               console.log('Received Event: ' + id);
+       }catch(err){};
+
     }
     /*
     var nuovoRifiuto = {
