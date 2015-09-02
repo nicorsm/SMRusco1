@@ -28,6 +28,28 @@
     height:400px;
     width:320px;
     overflow:hidden;
-    padding:0;
-    margin:0;
+    padding:0px;
+    margin:0px;
+    border:0px;
 }
+
+th {
+    text-align: left;
+}
+
+.grande{
+    border: 1px solid black;
+    border-collapse: collapse;
+     text-align:center;
+}
+
+.ui-btn-left {
+    height:13px; 
+}
+
+
+#positionNow{
+    text-align:center;
+}
+
+

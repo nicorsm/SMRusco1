@@ -7,21 +7,21 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>77A8B6DA-163A-463B-B08D-89FBADF5383E</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>RUSCO1</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E0D9EE94A369A2C27348E9901C15F0BC88D1C30E</key>
-		<string>https://bitbucket.org/ngiancecchi/sm-rusco-1</string>
+		<string>https://bitbucket.org/ngiancecchi/sm-rusco-1.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>platforms/ios/RUSCO1.xcodeproj/project.xcworkspace</string>
+	<string>platforms/ios/RUSCO1.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E0D9EE94A369A2C27348E9901C15F0BC88D1C30E</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/ngiancecchi/sm-rusco-1</string>
+	<string>https://bitbucket.org/ngiancecchi/sm-rusco-1.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>E0D9EE94A369A2C27348E9901C15F0BC88D1C30E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>smrusco</string>
+			<string>sm-rusco-1</string>
 		</dict>
 	</array>
 </dict>

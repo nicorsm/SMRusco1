@@ -43,7 +43,7 @@ Un test funzionante comprende la georeferenziazione di alcuni bidoni, anche virt
     
     <!-- Fix for iOS 7 overlapping status bar -->
     <!--<preference name="StatusBarOverlaysWebView" value="false" /> -->
-    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarBackgroundColor" value="#000000" /> 
     <!--<preference name="StatusBarStyle" value="lightcontent" />-->
     
     

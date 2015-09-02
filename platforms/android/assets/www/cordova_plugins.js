@@ -154,6 +154,20 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "id": "cordova-plugin-dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
+        "id": "cordova-plugin-dialogs.notification_android",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -320,6 +334,7 @@ module.exports.metadata =
     "com.synconset.cordovaHTTP": "0.1.4",
     "com.synconset.imageResizer": "0.1.1",
     "plugin.google.maps": "1.2.5",
+    "cordova-plugin-dialogs": "1.1.1",
     "cordova-plugin-file": "2.1.0",
     "plugin.http.request": "1.0.4",
     "com.google.playservices": "23.0.0"

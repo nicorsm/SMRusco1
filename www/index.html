@@ -50,8 +50,8 @@
             <div data-role="content">
                 <a data-role="button" href="#nuovoRifiuto" data-icon="plus" data-iconpos="left">Scansiona nuovo rifiuto</a>
                 <a data-role="button" href="#mappaBidoni" data-icon="location" data-iconpos="left">Mappa bidoni</a>
-                <a data-role="button" href="#listaBadge" data-icon="star" data-iconpos="left">Badge ottenuti</a>
-                <a data-role="button" href="#credits" data-icon="bullets" data-iconpos="left">Credits</a>
+                <a id ="buttonStat" data-role="button" href="#listaBadge" data-icon="star" data-iconpos="left">Badge ottenuti</a>
+                <a  data-role="button" href="#credits" data-icon="bullets" data-iconpos="left">Credits</a>
 
             </div>
         </div>
@@ -88,9 +88,13 @@
                <div id="mappa">
 
                </div>
+               
+               <p id="positionNow">In attesa di rilevare la posizione</p>
             </div>
             <div data-theme="a" data-role="footer" data-position="fixed">
-                <p id="positionNow">In attesa di rilevare la posizione</p>
+                <a id="fullScreen" data-role="button" data-iconpos="left" >Fullscreen</a>
+                <a id="nearest" data-role="button" data-iconpos="center">Naviga vs.</a>
+                <a id="refreshMap" data-role="button" data-iconpos="right">Ricarica</a>
             </div>
         </div>
 
@@ -112,10 +116,64 @@
                 <p>Database rifiuti fornito da San Marino Differenzia by Mr. APPs srl. &copy; 2015 Tutti i diritti riservati.</p>    
             </div>
         </div>
+        
+        <div data-role="page" id="listaBadge">
+            <div data-theme="" data-role="header">
+                <a id="btBack" data-role="button" href="#homePage" data-icon="back" data-iconpos="left" class="ui-btn-left"></a>
+                <h3>Badge ottenuti</h3>
+            </div>
+            
+            <div data-role="content">
+                
+                <table class="grande" style="width:100%">
+                    <tr>
+                        <th class="grande">Tipologia</th>
+                        <th class="grande">Quantit&agrave;</th>
+                        <th class="grande">Badge</th>
+                    </tr>
+                    <tr>
+                        <td class="grande">Carta</td>
+                        <td id="numCarta" class="grande">0</td>
+                        <td id="badgeCarta" class="grande"><img src="img/trash.png" height="42" width="42"/></td>
+                    </tr>
+                    <tr>
+                        <td class="grande">Plastica</td>
+                        <td id="numPlastica" class="grande">0</td>
+                        <td id="badgePlastica" class="grande"><img src="img/trash.png" height="42" width="42"/></td>
+                    </tr>
+                    <tr>
+                        <td class="grande">Vetro</td>
+                        <td id="numVetro" class="grande">0</td>
+                        <td id="badgeVetro" class="grande"><img src="img/trash.png" height="42" width="42"/></td>
+                    </tr>
+                    <tr>
+                        <td class="grande">Umido</td>
+                        <td id="numUmido" class="grande">0</td>
+                        <td id="badgeUmido" class="grande"><img src="img/trash.png" height="42" width="42"/></td>
+                    </tr>
+                    <tr>
+                        <td class="grande">Indifferenziata</td>
+                        <td id="numIndifferenziata" class="grande">0</td>
+                        <td id="badgeIndifferenziata" class="grande"><img src="img/trash.png" height="42" width="42"/></td>
+                    </tr>
+                </table>
+                <br></br>
+                
+                <table style="width:100%">
+                    <tr>
+                        <td>Punteggio totale</td>
+                        <td id="totale">0</td>
+                        
+                    </tr>
+                    
+                </table>
+            </div>
+        </div>
+
 
         
         <script type="text/javascript" src="cordova.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCN_2zTBRnwkRKeG6Rx4dERWiL7V_6SNIo&sensor=true"></script>
+        <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCN_2zTBRnwkRKeG6Rx4dERWiL7V_6SNIo&sensor=true"></script>-->
    <script type="text/javascript" src="lib/jquery/jquery-2.1.4.min.js"></script>
    <script type="text/javascript" src="lib/jquery-mobile/jquery.mobile-1.4.5.js"></script>
         <script type="text/javascript" src="js/index.js"></script>

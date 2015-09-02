@@ -63,6 +63,10 @@
                         {
                             "xml": "<feature name=\"Geocoder\"><param name=\"android-package\" value=\"plugin.google.maps.MyGeocoder\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -169,6 +173,9 @@
         },
         "plugin.google.maps": {
             "API_KEY_FOR_ANDROID": "AIzaSyCOacdxGy5ZWTMYb2_8hFHOuWMpdrSG3zA",
+            "PACKAGE_NAME": "com.sm.rusco"
+        },
+        "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "com.sm.rusco"
         }
     },

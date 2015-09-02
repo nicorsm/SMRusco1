@@ -58,6 +58,9 @@
     <feature name="Geocoder">
         <param name="ios-package" value="Geocoder" />
     </feature>
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <name>RUSCO1</name>
