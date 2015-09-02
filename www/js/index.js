@@ -57,7 +57,7 @@ bindEvents: function () {
     
 
     //setTimeout( function() {
-    $.getJSON("http://nicola.giancecchi.com/dev/smrusco/rifiuti.json", function(rows) {
+    $.getJSON("https://rawgit.com/nicorsm/SMRusco1/master/rifiuti.json", function(rows) {
               rifiuti=rows;
               console.log(rifiuti);
               var index=0;
@@ -162,7 +162,7 @@ onMapReady: function(){
         var markNearTitle = null;
         var minDistance = 10000000;  //10k km
         //get trash from database
-        $.getJSON("http://nicola.giancecchi.com/dev/smrusco/puntiraccolta.json", function(rows) {
+        $.getJSON("https://rawgit.com/nicorsm/SMRusco1/master/puntiraccolta.json", function(rows) {
                   $.each(rows, function (i, item) {
                          var temp = app.distanceBetweenTwoMarker(location.latLng.lat, location.latLng.lng, item[1], item[2]);
                          var latLng = new plugin.google.maps.LatLng(item[1],item[2]);
