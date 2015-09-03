@@ -55,9 +55,7 @@ bindEvents: function () {
     
     //document.getElementById("buttonStat").onClick=app.carica();
     
-    $("#demo").on("tap", function(){ 
-            app.demo(); 
-            });
+    
 
     //setTimeout( function() {
     $.getJSON("https://rawgit.com/nicorsm/SMRusco1/master/rifiuti.json", function(rows) {
@@ -80,6 +78,10 @@ bindEvents: function () {
     $("#listViewRifiuti").on('click', ' > li', function () {
                              var selected_index = $(this).index();
                              tipoRifiutoScelto = rifiuti[selected_index][2];
+                      
+    $("#demo").on("tap", function(){ 
+            app.demo(); 
+            });
                            //  alert(tipoRifiutoScelto);
                              });
     
@@ -274,31 +276,37 @@ onSuccess: function(position) {
 
 carica:  function(){
     
-    var numCarta = app.storage.getItem("carta");
-    var numPlastica = app.storage.getItem("plastica");
-    var numVetro = app.storage.getItem("vetro");
-    var numUmido = app.storage.getItem("umido");
-    var numIndifferenziata = app.storage.getItem("indifferenziata");
+    var numCarta = app.storage.getItem("CARTA");
+    var numPlastica = app.storage.getItem("PLASTICA");
+    var numMetallo = app.storage.getItem("METALLO");
+    var numMultiraccolta = app.storage.getItem("CENTRO DI MULTIRACCOLTA");
+    var numVetro = app.storage.getItem("VETRO");
+    var numUmido = app.storage.getItem("UMIDO");
+    var numResiduo = app.storage.getItem("RESIDUO");
     
     var cellaCarta=document.getElementById("numCarta");
     var cellaPlastica=document.getElementById("numPlastica");
     var cellaVetro=document.getElementById("numVetro");
     var cellaUmido=document.getElementById("numUmido");
-    var cellaIndifferenziata=document.getElementById("numIndifferenziata");
+    var cellaResiduo=document.getElementById("numResiduo");
+    var cellaMultiraccolta=document.getElementById("numMultiraccolta");
+    var cellaMetallo=document.getElementById("numMetallo");
     
     var cellaBadgeCarta=document.getElementById("badgeCarta");
     var cellaBadgePlastica=document.getElementById("badgePlastica");
     var cellaBadgeVetro=document.getElementById("badgeVetro");
     var cellaBadgeUmido=document.getElementById("badgeUmido");
-    var cellaBadgeIndifferenziata=document.getElementById("badgeIndifferenziata");
+    var cellaBadgeResiduo=document.getElementById("badgeResiduo");
+    var cellaBadgeMultiraccolta=document.getElementById("badgeMultiraccolta");
+    var cellaBadgeMetallo=document.getElementById("badgeMetallo");
     
     var totale=0;
     
-    arrayPunteggi = new Array(numCarta,numPlastica,numVetro,numUmido,numIndifferenziata);
-    arrayCelle=new Array(cellaCarta,cellaPlastica,cellaVetro,cellaUmido,cellaIndifferenziata);
-    arrayCelleBadge=new Array(cellaBadgeCarta,cellaBadgePlastica,cellaBadgeVetro,cellaBadgeUmido,cellaBadgeIndifferenziata);
+    arrayPunteggi = new Array(numCarta,numPlastica,numVetro,numUmido,numMetallo,numResiduo,numMultiraccolta);
+    arrayCelle=new Array(cellaCarta,cellaPlastica,cellaVetro,cellaUmido,cellaMetallo,cellaResiduo,cellaMultiraccolta);
+    arrayCelleBadge=new Array(cellaBadgeCarta,cellaBadgePlastica,cellaBadgeVetro,cellaBadgeUmido,cellaBadgeMetallo,cellaBadgeResiduo,cellaBadgeMultiraccolta);
     
-    for (var i=0; i < 5; i++){
+    for (var i=0; i < 7; i++){
         if(arrayPunteggi[i]==null){
             arrayCelle[i].innerHTML = 0;
         }else{
@@ -344,7 +352,7 @@ demo:function(){
             app.storage.setItem("bidonePrecedente",JSON.stringify(arrayCoordinate));
             console.log("Hai Raggiunto Il Bidone più Vicino!");
             
-    $("#demo").off('tap');
+            $("#demo").off('tap');
     
 },
     
@@ -354,39 +362,21 @@ salvaPunti:  function(tipologia){
     //visualizzo alert che notifica punto assegnato e categoria + se ho ottenuto un badge
     
     var valore=app.storage.getItem(tipologia);
-    
+        
     if(valore==null){
         valore=0;
     }
     
     valore=parseInt(valore)+1;
+    app.storage.setItem(tipologia,valore);
  
-    switch (tipologia) {
-        case "CARTA":
-            app.storage.setItem("carta",valore);
-            break;
-        case "PLASTICA" :
-            app.storage.setItem("plastica",valore);
-            break;
-        case "VETRO" :
-            app.storage.setItem("vetro",valore);
-            break;
-        case "UMIDO" :
-            app.storage.setItem("umido",valore);
-            break;
-        default:
-            app.storage.setItem("indifferenziata",valore);
-            
-            
+    if(valore!=5){
+                alert("Hai guadagnato 1 punto, rifiuto tipo: "+tipologia);
+    }else{
+                alert("Hai guadagnato 1 punto e un badge per rifiuti di tipo: "+tipologia);
     }
     
-            if(valore+1!=5){
-                alert("Hai guadagnato 1 punto, rifiuto tipo: "+tipologia);
-            }else{
-                alert("Hai guadagnato 1 punto e un badge per rifiuti di tipo: "+tipologia);
-            }
-            
-            app.carica();
+    app.carica();
     
 },
     //when device can t know position
