@@ -55,9 +55,12 @@ bindEvents: function () {
     
     //document.getElementById("buttonStat").onClick=app.carica();
     
+    $("#demo").on("tap", function(){ 
+            app.demo(); 
+            });
 
     //setTimeout( function() {
-    $.getJSON("http://nicola.giancecchi.com/dev/smrusco/rifiuti.json", function(rows) {
+    $.getJSON("https://rawgit.com/nicorsm/SMRusco1/master/rifiuti.json", function(rows) {
               rifiuti=rows;
               console.log(rifiuti);
               var index=0;
@@ -80,7 +83,7 @@ bindEvents: function () {
                            //  alert(tipoRifiutoScelto);
                              });
     
-    $("#buttonStat").on('click',app.carica());
+    $("#buttonStat").on('tap',app.carica());
     
     // }, 25000);
     
@@ -231,7 +234,6 @@ onSuccess: function(position) {
            && exitForNavigation ){
             //ecco qui aldo puoi metter il codice per assegnare i punti
             
-            
             tipoRifiutoPrecedente=app.storage.getItem("tipoRifiutoPrecedente");
             
             var stringaCoordinate=app.storage.getItem("bidonePrecedente");
@@ -239,15 +241,15 @@ onSuccess: function(position) {
             
             
             //controllo se il bidone è diverso dal precedente o se il rifiuto è di tipo diverso dal precedente se si salvo punteggio
-            if((bidonePrecedente[0]==nearTrashMark.lat && bidonePrecedente[1]==nearTrashMark.lng)|| tipoRifiutoPrecedente==tipoRifiutoScelto){
+            if(bidonePrecedente==null || (bidonePrecedente[0]!=nearTrashMark.lat && bidonePrecedente[1]!=nearTrashMark.lng)|| tipoRifiutoPrecedente!=tipoRifiutoScelto){
                 
                 
-                app.salvaPunti(tipoRifiutoPrecedente);
+                app.salvaPunti(tipoRifiutoScelto);
                 
                 
             }else{
                 //notifico che il punto non è stato assegnato e perche'
-                navigator.notification.alert("Nessun punto guadagnato, bidone utilizzato precedentemente o stessa tipologia di rifiuto precedente","Attenzione!","Ok");
+                alert("Nessun punto guadagnato, bidone utilizzato precedentemente o stessa tipologia di rifiuto precedente");
             }
             
             
@@ -260,10 +262,7 @@ onSuccess: function(position) {
             var arrayCoordinate=new Array(nearTrashMark.lat,nearTrashMark.lng);
             
             app.storage.setItem("bidonePrecedente",JSON.stringify(arrayCoordinate));
-            
-            
-            
-            console.log("Hai Raggiunto Il Bidone più Vicino!")
+            console.log("Hai Raggiunto Il Bidone più Vicino!");
             
         }
         
@@ -272,47 +271,7 @@ onSuccess: function(position) {
     }
     
 },
-    
-salvaPunti:  function(tipologia){
-    
-    //scrivo la tipologia (come chiave) e incremento il punteggio e salvo
-    //visualizzo alert che notifica punto assegnato e categoria + se ho ottenuto un badge
-    
-    var valore=app.storage.getItem(tipologia);
-    
-    if(valore==null){
-        valore=0;
-    }
-    
-    valore=parseInt(valore)+1;
- 
-    switch (tipologia) {
-        case "CARTA":
-            app.storage.setItem("carta",valore);
-            break;
-        case "PLASTICA" :
-            app.storage.setItem("plastica",valore);
-            break;
-        case "VETRO" :
-            app.storage.setItem("vetro",valore);
-            break;
-        case "UMIDO" :
-            app.storage.setItem("umido",valore);
-            break;
-        default:
-            app.storage.setItem("indifferenziata",valore);
-            
-            if(valore+1!=5){
-                navigator.notification.alert("Hai guadagnato 1 punto, rifiuto tipo: "+tipologia,"Bravo!","Ok");
-                
-            }else{
-                navigator.notification.alert("Hai guadagnato 1 punto e un badge per rifiuti di tipo: "+tipologia,"Complimenti!","Ok");
-                
-            }
-            
-    }
-    
-},
+
 carica:  function(){
     
     var numCarta = app.storage.getItem("carta");
@@ -361,6 +320,79 @@ carica:  function(){
     
 },
     
+    
+demo:function(){
+    
+            
+            tipoRifiutoPrecedente=app.storage.getItem("tipoRifiutoPrecedente");
+            
+            var stringaCoordinate=app.storage.getItem("bidonePrecedente");
+            bidonePrecedente=JSON.parse(stringaCoordinate);
+            //controllo se il bidone è diverso dal precedente o se il rifiuto è di tipo diverso dal precedente se si salvo punteggio
+            if(bidonePrecedente==null || tipoRifiutoPrecedente!=tipoRifiutoScelto){
+                app.salvaPunti(tipoRifiutoScelto);
+            }else{
+                //notifico che il punto non è stato assegnato e perche'
+                alert("Nessun punto guadagnato, bidone utilizzato precedentemente o stessa tipologia di rifiuto precedente");
+            }
+            //in entrambi i casi salvo la tipologia del rifiuto corrente e del bidone corrente
+            
+            app.storage.setItem("tipoRifiutoPrecedente",tipoRifiutoScelto);
+            
+            var arrayCoordinate=new Array(nearTrashMark.lat,nearTrashMark.lng);
+            
+            app.storage.setItem("bidonePrecedente",JSON.stringify(arrayCoordinate));
+            console.log("Hai Raggiunto Il Bidone più Vicino!");
+            
+            
+    //$("#more").remove();
+    //$("#updates").append(htmldat).listview('refresh');
+    ///$("#more").trigger('create');
+    $("#demo").off('tap');//.on('click', function(){});
+    
+},
+    
+salvaPunti:  function(tipologia){
+    
+    //scrivo la tipologia (come chiave) e incremento il punteggio e salvo
+    //visualizzo alert che notifica punto assegnato e categoria + se ho ottenuto un badge
+    
+    var valore=app.storage.getItem(tipologia);
+    
+    if(valore==null){
+        valore=0;
+    }
+    
+    valore=parseInt(valore)+1;
+ 
+    switch (tipologia) {
+        case "CARTA":
+            app.storage.setItem("carta",valore);
+            break;
+        case "PLASTICA" :
+            app.storage.setItem("plastica",valore);
+            break;
+        case "VETRO" :
+            app.storage.setItem("vetro",valore);
+            break;
+        case "UMIDO" :
+            app.storage.setItem("umido",valore);
+            break;
+        default:
+            app.storage.setItem("indifferenziata",valore);
+            
+            
+    }
+    
+            if(valore+1!=5){
+                alert("Hai guadagnato 1 punto, rifiuto tipo: "+tipologia);
+            }else{
+                alert("Hai guadagnato 1 punto e un badge per rifiuti di tipo: "+tipologia);
+            }
+            
+            app.carica();
+    
+},
     //when device can t know position
 onError: function(error) {
     
@@ -450,7 +482,7 @@ resetAll:function (){
         var markNearTitle = null;
         var minDistance = 10000000;  //10k km
         //get trash from database
-        $.getJSON("http://nicola.giancecchi.com/dev/smrusco/puntiraccolta.json", function(rows) {
+        $.getJSON("https://rawgit.com/nicorsm/SMRusco1/master/puntiraccolta.json", function(rows) {
                   $.each(rows, function (i, item) {
                          var temp = app.distanceBetweenTwoMarker(location.latLng.lat, location.latLng.lng, item[1], item[2]);
                          var latLng = new plugin.google.maps.LatLng(item[1],item[2]);
